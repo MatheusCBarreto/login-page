@@ -8,6 +8,7 @@
   >
   <form [formGroup]="loginForm">
     <app-primary-input
+      formControlName="email"
       inputName="email"
       type="email"
       label="Email"
@@ -16,6 +17,7 @@
       <img src="/assets/svg/email-icon.svg" alt="simbolo de email em forma figurativa">
     </app-primary-input>
     <app-primary-input
+      formControlPassword="password"
       inputName="password"
       type="password"
       label="Your password"
