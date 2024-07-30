@@ -25,6 +25,7 @@ interface loginForm {
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
+
 })
 export class LoginComponent {
   loginForm!: FormGroup;
@@ -36,7 +37,7 @@ export class LoginComponent {
   ) {
     this.loginForm = new FormGroup({
       email: new FormControl("", [Validators.required, Validators.email]),
-      password: new FormGroup("", [Validators.required, Validators.minLength(6)])
+      password: new FormControl("", [Validators.required, Validators.minLength(6)])
     })
   }
 

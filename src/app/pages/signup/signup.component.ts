@@ -9,10 +9,10 @@ import { LoginService } from "../../services/login.service";
 
 
 interface SignupForm {
-  name: FormControl<string | null>,
-  email: FormControl<string | null>,
-  password: FormControl<string | null>,
-  passwordConfirm: FormControl<string | null>,
+  name: FormControl,
+  email: FormControl,
+  password: FormControl,
+  passwordConfirm: FormControl,
 }
 
 @Component({
@@ -45,17 +45,23 @@ export class SignupComponent {
     })
   }
 
+  // submit() {
+  //   if (this.signupForm.valid) {
+  //     const { email, password } = this.signupForm.value;
+  //     this.loginService.login(email!, password!).subscribe({
+  //       next: () => this.toastr.success("Signup successful"),
+  //       error: () => this.toastr.error("Unexpected error! Please try again later.")
+  //     });
+  //   } else {
+  //     this.toastr.error("Please fill out the form correctly.");
+  //   }
+  // }
+
   submit() {
-    if (this.signupForm.valid) {
-      const { email, password } = this.signupForm.value;
-      // Replace login with signup logic here
-      this.loginService.login(email!, password!).subscribe({
-        next: () => this.toastr.success("Signup successful"),
-        error: () => this.toastr.error("Unexpected error! Please try again later.")
-      });
-    } else {
-      this.toastr.error("Please fill out the form correctly.");
-    }
+    this.loginService.signup(this.signupForm.value.name, this.signupForm.value.email, this.signupForm.value.password).subscribe({
+      next: () => this.toastr.success("Login feito com sucesso!"),
+      error: () => this.toastr.error("Erro inesperado! Tente novamente mais tarde.")
+    })
   }
 
   navigate() {
